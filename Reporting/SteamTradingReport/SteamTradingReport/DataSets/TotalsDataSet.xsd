@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TotalsDataSet" targetNamespace="http://tempuri.org/TotalsDataSet.xsd" xmlns:mstns="http://tempuri.org/TotalsDataSet.xsd" xmlns="http://tempuri.org/TotalsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="_0495_392_SteamTradingYellowConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="_0495_392_SteamTradingYellowConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SteamTradingReport.My.MySettings.GlobalReference.Default._0495_392_SteamTradingYellowConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TotalsDataTableTableAdapter" GeneratorDataComponentClassName="TotalsDataTableTableAdapter" Name="TotalsDataTable" UserDataComponentName="TotalsDataTableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="_0495_392_SteamTradingYellowConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Games.Id AS Games, Cards.Id AS Cards, Posts.Id AS Posts, Users.Id AS Users
+FROM            Cards FULL OUTER JOIN
+                         Games ON Cards.Game_Id = Games.Id FULL OUTER JOIN
+                         Posts ON Cards.Id = Posts.CardToHave_Id AND Cards.Id = Posts.CardToWant_Id FULL OUTER JOIN
+                         Users ON Posts.UserId = Users.Id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Games" DataSetColumn="Games" />
+              <Mapping SourceColumn="Cards" DataSetColumn="Cards" />
+              <Mapping SourceColumn="Posts" DataSetColumn="Posts" />
+              <Mapping SourceColumn="Users" DataSetColumn="Users" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TotalsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TotalsDataSet" msprop:Generator_UserDSName="TotalsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TotalsDataTable" msprop:Generator_TableClassName="TotalsDataTableDataTable" msprop:Generator_TableVarName="tableTotalsDataTable" msprop:Generator_TablePropName="TotalsDataTable" msprop:Generator_RowDeletingName="TotalsDataTableRowDeleting" msprop:Generator_RowChangingName="TotalsDataTableRowChanging" msprop:Generator_RowEvHandlerName="TotalsDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalsDataTableRowDeleted" msprop:Generator_UserTableName="TotalsDataTable" msprop:Generator_RowChangedName="TotalsDataTableRowChanged" msprop:Generator_RowEvArgName="TotalsDataTableRowChangeEvent" msprop:Generator_RowClassName="TotalsDataTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Games" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnGames" msprop:Generator_ColumnPropNameInRow="Games" msprop:Generator_ColumnPropNameInTable="GamesColumn" msprop:Generator_UserColumnName="Games" type="xs:int" minOccurs="0" />
+              <xs:element name="Cards" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCards" msprop:Generator_ColumnPropNameInRow="Cards" msprop:Generator_ColumnPropNameInTable="CardsColumn" msprop:Generator_UserColumnName="Cards" type="xs:int" minOccurs="0" />
+              <xs:element name="Posts" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPosts" msprop:Generator_ColumnPropNameInRow="Posts" msprop:Generator_ColumnPropNameInTable="PostsColumn" msprop:Generator_UserColumnName="Posts" type="xs:int" minOccurs="0" />
+              <xs:element name="Users" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUsers" msprop:Generator_ColumnPropNameInRow="Users" msprop:Generator_ColumnPropNameInTable="UsersColumn" msprop:Generator_UserColumnName="Users" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

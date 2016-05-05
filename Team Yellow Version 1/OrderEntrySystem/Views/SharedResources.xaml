@@ -1,0 +1,157 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:vm="clr-namespace:OrderEntrySystem"
+                    xmlns:vw="clr-namespace:OrderEntrySystem"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+ 
+
+    <DataTemplate DataType="{x:Type vm:AddNewPostViewModel}">
+        <vw:PostView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:MultiPostViewModel}">
+        <vw:MultiPostView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:MultiUserPostViewModel}">
+        <vw:MultiUserPostView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SinglePostViewModel}">
+        <vw:SinglePostView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+        <vw:HomeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:BrowseAllCardsViewModel}">
+        <vw:BrowseAllCardsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:BrowseAllGamesViewModel}">
+        <vw:BrowseAllGamesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:MultiGameViewModel}">
+        <vw:NewGamesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SearchPostsViewModel}">
+        <vw:SearchPostsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SignInViewModel}">
+        <vw:ProfileSignInView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CardViewModel}">
+        <vw:CardView/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <TabControl MaxWidth="500" IsSynchronizedWithCurrentItem="True" Margin="4" ItemsSource="{Binding}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Button Command="{Binding Path=CloseCommand}" Content="x" DockPanel.Dock="Right" 
+                                Margin="4,0,0,0" FontSize="9" 
+                                FontWeight="Bold" FontFamily="Courier" 
+                                Height="16" Width="16" Background="#F02252" Foreground="Black"
+                                Visibility="{Binding CloseButtonVisibility, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ContentPresenter Content="{Binding Path=DisplayName}" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
+    </DataTemplate>
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                    <Button Command="{Binding Path=Command}" Background="#FF19AA20" Foreground="White" Content="{Binding Path=DisplayName}"/>
+            </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="HorizontalButtonTemplate">
+        <ItemsControl ItemsSource="{Binding}" Margin="10" HorizontalAlignment="Right">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=Command}"
+                            Content="{Binding Path=DisplayName}"
+                            Height="23"
+                            Width="75"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </DataTemplate>
+
+    <DataTemplate x:Key="HorizontalEditPostButtonTemplate">
+        <ItemsControl ItemsSource="{Binding}" Margin="10" HorizontalAlignment="Right">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=Command}"
+                            Content="{Binding Path=DisplayName}"
+                            Background="#FF19AA20"
+                            Foreground="White"
+                            Height="23"
+                            Width="100"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+    <DataTemplate x:Key="HorizontalCommandsTemplate">
+        <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="1" Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=Command}"
+                            Content="{Binding Path=DisplayName}"
+                            Background="#FF19AA20"
+                            Foreground="White"
+                            Height="23"
+                            Width="80"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+    
+    <Style x:Key="MultiEntityListViewStyle" TargetType="{x:Type ListViewItem}">
+        <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}" />
+    </Style>
+
+    <Style x:Key="PagingButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="Webdings" />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Width" Value="45" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+    <Style x:Key="PagingTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Width" Value="45" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+    <Style x:Key="PagingTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+</ResourceDictionary>

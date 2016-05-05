@@ -1,0 +1,55 @@
+﻿<Window x:Class="OrderEntrySystem.Windows.NotificationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="Notification Popup" Width="350" SizeToContent="Height"
+  WindowStyle="None" ShowInTaskbar="False" ShowActivated="False" AllowsTransparency="True" Background="Transparent">
+
+    <Grid RenderTransformOrigin="0,1" >
+        <!-- Notification area -->
+        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="3">
+            <Border.Background>
+                <LinearGradientBrush Opacity="0.8" StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="#79FF79" />
+                    <GradientStop Offset=".50" Color="#79FF79" />
+                    <GradientStop Offset=".49" Color="#94FF94" />
+                    <GradientStop Offset="0" Color="#CAFFCA" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="5">
+                <Button x:Name="closeButton" Content="Close" HorizontalAlignment="Right" Margin="0,0,0,72" Width="71" Height="22" Click="closeButton_Click" />
+                <StackPanel Margin="10,10,55,10">
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,20,5" Height="64">
+                        <Bold>
+                            <Run Name="NotificationTitle" Text="Alert"/>
+                        </Bold>
+                        <LineBreak />
+                        <LineBreak />
+                            <Run  Name="NotificationMessage" Text="Alert has happened."/>
+                    </TextBlock>
+                </StackPanel>
+                <Image x:Name="profilePicture" HorizontalAlignment="Left" Height="67" Margin="267,27,0,0" VerticalAlignment="Top" Width="71"/>
+            </Grid>
+        </Border>
+
+        <!-- Animation -->
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                            <SplineDoubleKeyFrame KeyTime="0:0:0" Value="100"/>
+                            <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Completed="closeAnim_Completed" Name="closeAnim" Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <SplineDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+                            <SplineDoubleKeyFrame KeyTime="0:0:10.3" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+        <Grid.RenderTransform>
+            <TranslateTransform Y="100"/>
+        </Grid.RenderTransform>
+    </Grid>
+</Window>

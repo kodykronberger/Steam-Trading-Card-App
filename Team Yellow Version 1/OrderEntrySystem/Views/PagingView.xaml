@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="OrderEntrySystem.PagingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OrderEntrySystem"
+             mc:Ignorable="d" Height="30" Width="384.666">
+    <UserControl.Resources>
+        <ResourceDictionary Source="SharedResources.xaml" />
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Button Style="{StaticResource ResourceKey=PagingButton}" Foreground="White" Background="#FF19AA20" Command="{Binding Path=Pager.GoToFirstPageCommand}" Content="9" />
+        <Button Style="{StaticResource ResourceKey=PagingButton}"  Background="#FF19AA20" Foreground="White" Command="{Binding Path=Pager.GoToPreviousPageCommand}" Content="3" />
+        <TextBlock Style="{StaticResource ResourceKey=PagingTextBlock}"  Foreground="White" Text="Page"/>
+        <TextBox Style="{StaticResource ResourceKey=PagingTextBox}" Text="{Binding Path=Pager.CurrentPage}"/>
+        <TextBlock Style="{StaticResource ResourceKey=PagingTextBlock}" Foreground="White" Text="Of "/>
+        <TextBlock Style="{StaticResource ResourceKey=PagingTextBlock}" Text="{Binding Path=Pager.PageCount}"/>
+        <Button Style="{StaticResource ResourceKey=PagingButton}" Background="#FF19AA20" Foreground="White" Command="{Binding Path=Pager.GoToNextPageCommand}" Content="4" />
+        <Button Style="{StaticResource ResourceKey=PagingButton}" Background="#FF19AA20" Foreground="White" Command="{Binding Path=Pager.GoToLastPageCommand}" Content=":" />
+    </StackPanel>
+</UserControl>

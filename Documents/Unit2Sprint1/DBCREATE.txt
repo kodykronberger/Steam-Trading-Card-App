@@ -1,0 +1,102 @@
+USE TeamYellow;
+
+-- CREATE TABLES --
+
+CREATE TABLE [Card]
+(
+	CardID int not null,
+	CardTitle nvarchar(50),
+	CardPrice smallmoney,
+	CardSetID int,
+	GameID int not null
+);
+CREATE TABLE CardSet
+(
+	CardSetID int not null,
+	CardSetTitle nvarchar(50),
+	CardSetDesc nvarchar(1000)
+);
+CREATE TABLE Game
+(
+	GameID int not null,
+	GameTitle nvarchar(75),
+	GameDesc nvarchar(1000)
+);
+CREATE TABLE Post
+(
+	PostID int not null,
+	PostOpened datetime2 not null,
+	PostClosed datetime2
+);
+CREATE TABLE PostHistory
+(
+	PostHistoryID int not null,
+	UserID int not null,
+	PostID int not null
+);
+CREATE TABLE [User]
+(
+	UserID int not null,
+	Username nvarchar(30),
+	TotalCards int
+);
+CREATE TABLE UserCards
+(
+	UserCardsID int not null,
+	UserID int not null,
+	CardID int not null
+);
+GO
+
+-- ADD PRIMARY KEYS
+
+ALTER TABLE [Card]
+	ADD CONSTRAINT PK_Card
+	PRIMARY KEY (CardID);
+ALTER TABLE CardSet
+	ADD CONSTRAINT PK_CardSet
+	PRIMARY KEY (CardSetID);
+ALTER TABLE Game
+	ADD CONSTRAINT PK_Game
+	PRIMARY KEY (GameID);
+ALTER TABLE Post
+	ADD CONSTRAINT PK_Post
+	PRIMARY KEY (PostID);
+ALTER TABLE PostHistory
+	ADD CONSTRAINT PK_PostHistory
+	PRIMARY KEY (PostHistoryID);
+ALTER TABLE [User]
+	ADD CONSTRAINT PK_User
+	PRIMARY KEY (UserID);
+ALTER TABLE UserCards
+	ADD CONSTRAINT PK_UserCards
+	PRIMARY KEY (UserCardsID);
+GO
+
+-- ADD FOREIGN KEYS --
+
+ALTER TABLE [Card]
+	ADD CONSTRAINT FK_Card_to_CardSet
+	FOREIGN KEY (CardSetID)
+	REFERENCES CardSet (CardSetID);
+ALTER TABLE [Card]
+	ADD CONSTRAINT FK_Card_to_Game
+	FOREIGN KEY (GameID)
+	REFERENCES Game (GameID);
+ALTER TABLE PostHistory
+	ADD CONSTRAINT FK_PostHistory_to_Post
+	FOREIGN KEY (PostID)
+	REFERENCES Post (PostID);
+ALTER TABLE PostHistory
+	ADD CONSTRAINT FK_PostHistory_to_User
+	FOREIGN KEY (UserID)
+	REFERENCES [User] (UserID);
+ALTER TABLE UserCards
+	ADD CONSTRAINT FK_UserCards_to_Card
+	FOREIGN KEY (CardID)
+	REFERENCES [Card] (CardID);
+ALTER TABLE UserCards
+	ADD CONSTRAINT FK_UserCards_to_User
+	FOREIGN KEY (UserID)
+	REFERENCES [User] (UserID);
+GO

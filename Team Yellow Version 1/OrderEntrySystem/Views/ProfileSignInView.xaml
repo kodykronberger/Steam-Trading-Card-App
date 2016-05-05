@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="OrderEntrySystem.ProfileSignInView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OrderEntrySystem"
+             mc:Ignorable="d" Width="500" Height="389.34">
+    <UserControl.Resources>
+        <ResourceDictionary Source="SharedResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Background="#195572">
+        <Label Content="Sign In Using Steam Account" HorizontalAlignment="Left" Foreground="#1AD2FF" Margin="75,10,0,0" VerticalAlignment="Top" Width="280" Height="42" FontSize="20"/>
+        <TextBox x:Name="SteamIdTextBox" HorizontalAlignment="Left" Height="23" Background="White" Foreground="Black" Margin="96,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Text="{Binding Path=SteamIdTextBox, UpdateSourceTrigger=PropertyChanged}"/>
+        <ContentControl x:Name="SignInButton" Content="{Binding Path=SignInCommands}" ContentTemplate="{StaticResource HorizontalEditPostButtonTemplate}" Margin="271,46,109,299" />
+        <Label Content="Create Account" HorizontalAlignment="Left" Margin="391,36,0,0" VerticalAlignment="Top" Width="98" Foreground="#FF32CA44" MouseDown="LabelMouseDownCreateAccount" MouseEnter="LabelMouseEnterCreateAccount"/>
+        <Label Content="Steam Id:" HorizontalAlignment="Left" Foreground="#1AD2FF" Margin="10,50,0,0" VerticalAlignment="Top" Width="79" Height="32" FontSize="16" RenderTransformOrigin="0.225,1.023"/>
+        <Label x:Name="inventoryLabel" Content="Inventory" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="280" Height="38" FontSize="20" Visibility="Hidden"/>
+        <Separator HorizontalAlignment="Left" Height="13" Margin="0,82,0,0" VerticalAlignment="Top" Width="555"/>
+        <ListView ScrollViewer.CanContentScroll="False" x:Name="inventoryListView" HorizontalAlignment="Left" Height="223" Margin="10,125,0,0" VerticalAlignment="Top" Width="409" Visibility="Hidden"></ListView>
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" HorizontalAlignment="Left" Height="16" Margin="10,95,0,0" VerticalAlignment="Top" Width="409" Visibility="Hidden"/>
+        <ListView x:Name="multipostListBox" Background="#195572" ItemsSource="{Binding Path=UserCards, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ResourceKey=MultiEntityListViewStyle}" Margin="10,100,35,41" ScrollViewer.CanContentScroll = "False">
+            <ListView.View>
+                <GridView x:Name="multicardGrid">
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="#0C83BC"/>
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="#1AD2FF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn Header="{Binding UserName}" />
+                    </GridView>
+            </ListView.View>
+        </ListView>
+        <ContentControl x:Name="CommandsButton" Content="{Binding Path=Commands, UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource HorizontalEditPostButtonTemplate}" VerticalAlignment="Bottom" Visibility="{Binding CommandsVisibility}"/>
+        <Label Content="Find Steam Id" HorizontalAlignment="Left" Margin="391,59,0,0" VerticalAlignment="Top" Width="98" Foreground="#FF32CA44" MouseDown="Label_MouseDown" MouseEnter="LabelMouseEnterCreateAccount"/>
+    </Grid>
+</UserControl>

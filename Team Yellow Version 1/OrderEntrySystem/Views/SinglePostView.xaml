@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="OrderEntrySystem.SinglePostView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="105" Width="435">
+    <Grid Margin="0,0,0,0">
+        <Border BorderBrush="Black" BorderThickness="1" Height="105" VerticalAlignment="Top" CornerRadius="5">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="#4AC390" />
+                    <GradientStop Offset=".50" Color="#358B67" />
+                    <GradientStop Offset=".49" Color="#468B6E" />
+                    <GradientStop Offset="0" Color="#688B7C" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Label x:Name="quantityToWantLabel" Content="{Binding Path=QuantityToWant}" HorizontalAlignment="Left" Margin="326,49,0,0" VerticalAlignment="Top" Width="28" Foreground="White"/>
+        <Label x:Name="quantityToHaveLabel" Content="{Binding Path=QuantityToHave}" HorizontalAlignment="Left" Margin="139,49,0,0" VerticalAlignment="Top" Width="28" Foreground="White"/>
+
+        <Label x:Name="arrowLabel" Content="→" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="425" Foreground="White" Height="72" FontSize="45" Margin="0,28,0,0" FontFamily="Meiryo" FontWeight="Bold" BorderThickness="0">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="1" 
+                          Color="Black" RenderingBias="Quality"/>
+            </Label.Effect>
+        </Label>
+        <Image Source="{Binding CardToHaveThumbnail}" x:Name="image" HorizontalAlignment="Left" Height="72" Margin="120,28,0,0" VerticalAlignment="Top" Width="70"/>
+        <Image Source="{Binding CardToWantThumbnail}" x:Name="image_Copy" HorizontalAlignment="Left" Height="72" Margin="241,28,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label HorizontalContentAlignment="Right" x:Name="label" Content="My Card" HorizontalAlignment="Left" Margin="19,25,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontWeight="Bold" FontSize="14.667"></Label>
+        <Label HorizontalContentAlignment="Right" x:Name="label_Copy" Content="{Binding CardToHaveName}" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top" Width="115" Foreground="#FF0CFF00" Height="25" FontSize="10.667" />
+        <Label HorizontalContentAlignment="Left" x:Name="label_Copy1" Content="Looking for.." HorizontalAlignment="Left" Margin="307,25,0,0" VerticalAlignment="Top" Width="96" Foreground="White" FontWeight="Bold" FontSize="14.667"/>
+        <Label HorizontalContentAlignment="Left" x:Name="label_Copy2" Content="{Binding CardToWantName}" HorizontalAlignment="Left" Margin="307,44,0,0" VerticalAlignment="Top" Width="125" Foreground="#FF0CFF00" Height="25" FontSize="10.667" />
+        <Label HorizontalContentAlignment="Left" x:Name="label_Copy3" Content="{Binding UserName}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="226" Foreground="White" Height="28" FontSize="12" FontWeight="Bold">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5" Color="#FFAAAAAA"/>
+            </Label.Effect>
+        </Label>
+        <Label HorizontalContentAlignment="Right" x:Name="label_Copy4" Content="{Binding DatePosted}" HorizontalAlignment="Left" Margin="241,0,0,0" VerticalAlignment="Top" Width="191" Foreground="White" Height="28" FontSize="12">
+            <Label.Effect>
+                <DropShadowEffect Opacity="0.5" Color="#FFAAAAAA"/>
+            </Label.Effect>
+        </Label>
+        <Label HorizontalContentAlignment="Right" x:Name="label_Copy5" HorizontalAlignment="Left" Margin="0,59,0,0" VerticalAlignment="Top" Width="115" Foreground="White" Height="45" FontSize="10.667">
+            <Label.Content>
+                <AccessText TextAlignment="Right" TextWrapping="Wrap" Text="{Binding CardToHaveGame}"/>
+            </Label.Content>
+        </Label>
+        <Label HorizontalContentAlignment="Left" x:Name="label_Copy6" HorizontalAlignment="Left" Margin="307,59,0,0" VerticalAlignment="Top" Width="125" Foreground="White" Height="45" FontSize="10.667">
+            <Label.Content>
+                <AccessText TextAlignment="Left" TextWrapping="Wrap" Text="{Binding CardToWantGame}"/>
+            </Label.Content>
+        </Label>
+    </Grid>
+</UserControl>

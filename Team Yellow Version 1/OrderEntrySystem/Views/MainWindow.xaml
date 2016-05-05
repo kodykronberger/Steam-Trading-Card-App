@@ -1,0 +1,25 @@
+﻿<Window x:Class="OrderEntrySystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Path=DisplayName}" Height="533.417" Width="860.741" Background="#FF414141" Foreground="White" Closed="Window_Closed">
+    <Window.Resources>
+        <ResourceDictionary Source="SharedResources.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <HeaderedContentControl Header="Navigation" Content="{Binding Path=Commands, UpdateSourceTrigger=PropertyChanged}" 
+                                ContentTemplate="{StaticResource CommandsTemplate}" Margin="0,0,0,97"/>
+        <Border Width="100" Margin="4"/>
+        <Border Grid.Column="2">
+            <HeaderedContentControl 
+                                    Content="{Binding Workspaces}" 
+                                    ContentTemplate="{StaticResource WorkspacesTemplate}"/>
+        </Border>
+        <Image HorizontalAlignment="Left" Height="74" Margin="17,332,0,0" VerticalAlignment="Bottom" Width="76" Source="/OrderEntrySystem;component/Window Images/Logo-Steam.png"/>
+        <Label Content="Steam Trading App" HorizontalAlignment="Left" Margin="3,0,0,74" VerticalAlignment="Bottom" Foreground="White" FontSize="10" FontWeight="Bold"/>
+    </Grid>
+</Window>
